@@ -1,78 +1,66 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useSelector, useDispatch } from 'react-redux'
-import { logout as logoutAction } from "../redux/reducers/auth"
-import defaultavatar from '../assets/default-avatar.png'
-import {CgProfile} from 'react-icons/cg'
-import {BsCreditCard2BackFill} from 'react-icons/bs'
-import {AiFillEdit} from 'react-icons/ai'
-import {FiUnlock} from 'react-icons/fi'
-import {GoChecklist} from 'react-icons/go'
-import {AiOutlineHeart} from 'react-icons/ai'
-import {AiFillSetting } from 'react-icons/ai'
-import {BiLogOut} from 'react-icons/bi'
+import { Link } from "react-router-dom"
+import {MdSell} from 'react-icons/md'
+import {AiOutlineFileText, AiOutlinePicture, AiFillSetting} from 'react-icons/ai'
+import {BsFillCalendarEventFill} from 'react-icons/bs'
+import {FaNewspaper, FaRegSnowflake} from 'react-icons/fa'
+import {TfiMenuAlt} from 'react-icons/tfi'
+import React from "react"
 
 const Dashboard = ()=> {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const doLogout = ()=> {
-        window.localStorage.removeItem('token')
-        dispatch(logoutAction())
-        navigate('/login')
-    }
-    const getProfile = useSelector(state => state.profile.data)
+    const [acara, setAcara] = React.useState(false);
 
-    // useEffect(() => {
-    //     console.log(getProfile)
-    // }, [getProfile])
+    const buttonMasterAcara = () => {
+        setAcara(prevSort => !prevSort);
+    };
 
     return (
-        <>
-            <div className='w-1/4 mx-16 max-lg:hidden'>
-                <div className='flex items-center my-8 gap-4'>
-                    <img src={getProfile.picture ? getProfile?.picture : defaultavatar} className='w-20 h-20 rounded-full'/>
-                    <div className='flex flex-col gap-2'>
-                        <div className='font-bold'>{getProfile.fullName}</div>
-                        <div className='text-slate-400'>{getProfile.profession}, {getProfile.nationality}</div>
-                    </div>
+        <div className='bg-slate-700 w-[250px] h-[900px]'>
+                <div className='pt-6 mb-24 flex justify-center items-end'>
+                    <div className='text-white text-2xl font-semibold'>ADMINISTRATOR</div>
                 </div>
-                <div className='flex justify-center'>
-                    <div className='grid gap-6'>
-                        <div className={`flex cursor-pointer items-center gap-2 hover:text-blue-500 font-semibold`}>
-                            <CgProfile size={25}/>
-                            <div className={`hover:text-blue-500 font-semibold`}>Profile</div>
-                        </div>
-                        <div className={`flex pl-8 cursor-pointer items-center gap-2 hover:text-blue-500 font-semibold`}>
-                            <BsCreditCard2BackFill size={25}/>
-                            <div className={`hover:text-blue-500 font-semibold`}>Card</div>
-                        </div>
-                        <Link to='/profile' className={`flex pl-8 cursor-pointer items-center gap-2 hover:text-blue-500 ${location.pathname === '/profile' ? 'text-[#FF8551]' : ''} font-semibold`}>
-                            <AiFillEdit size={25}/>
-                            <div>Edit Profile</div>
-                        </Link>
-                        <Link to='/change-password' className={`flex pl-8 cursor-pointer items-center gap-2 hover:text-blue-500 ${location.pathname === '/change-password' ? 'text-[#FF8551]' : ''} font-semibold`}>
-                            <FiUnlock size={25}/>
-                            <div>Change Password</div>
-                        </Link>
-                        <Link to='/my-booking' className={`flex cursor-pointer items-center gap-2 hover:text-blue-500 ${location.pathname === '/my-booking' ? 'text-[#FF8551]' : ''} font-semibold`}>
-                            <GoChecklist size={25}/>
-                            <div>MyBooking</div>
-                        </Link>
-                        <Link to='/my-wishlist' className={`flex cursor-pointer items-center gap-2 hover:text-blue-500 ${location.pathname === '/my-wishlist' ? 'text-[#FF8551]' : ''} font-semibold`}>
-                            <AiOutlineHeart size={25}/>
-                            <div>MyWishlist</div>
-                        </Link>
-                        <div className={`flex cursor-pointer items-center gap-2 hover:text-blue-500 font-semibold`}>
-                            <AiFillSetting size={25}/>
-                            <div>Setting</div>
-                        </div>
-                        <div onClick={doLogout} className='flex cursor-pointer items-center gap-2'>
-                            <BiLogOut size={25} color='red'/>
-                            <div className='font-semibold text-red-500'>Logout</div>
-                        </div>
+                <div className='flex flex-col px-6 gap-10 text-slate-400'>
+                    <Link to='/paneladmin/kategori' className={`hover:text-[#3bc0c3] flex gap-2 ${location.pathname === '/paneladmin/kategori' ? 'text-[#3bc0c3]' : ''}`}>
+                        <MdSell size={25} />
+                        <div >Kategori</div>
+                    </Link>
+                    <Link to='/paneladmin/halaman' className={`hover:text-[#3bc0c3] flex gap-2 ${location.pathname === '/paneladmin/halaman' ? 'text-[#3bc0c3]' : ''}`}>
+                        <AiOutlineFileText size={25} />
+                        <div>Halaman</div>
+                    </Link>
+                    <div>
+                        <button onClick={() => buttonMasterAcara()} className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/tambahAcara' || location.pathname === '/paneladmin/acara' ? 'text-[#3bc0c3]' : ''}`}>
+                            <BsFillCalendarEventFill size={20} />
+                            <div className='cursor-pointer hover:text-[#3bc0c3]'>Master Acara</div>
+                        </button>
+                        {acara && (
+                            <div className="px-7 mt-4 flex flex-col gap-4">
+                                <Link to='/paneladmin/acara' className={`hover:text-[#3bc0c3] flex gap-2 ${location.pathname === '/paneladmin/acara' ? 'text-[#3bc0c3]' : ''}`}>Data Acara</Link >
+                                <Link to='/paneladmin/tambahAcara' className={`hover:text-[#3bc0c3] flex gap-2 ${location.pathname === '/paneladmin/tambahAcara' ? 'text-[#3bc0c3]' : ''}`}>Tambah Acara</Link >
+                            </div>
+                        )}
                     </div>
+                    <Link to='/paneladmin/halaman' className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/article' ? 'text-[#3bc0c3]' : ''}`}>
+                        <FaNewspaper size={20} />
+                        <div className='cursor-pointer hover:text-[#3bc0c3]'>Master Article</div>
+                    </Link>
+                    <Link to='/paneladmin/halaman' className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/album' ? 'text-[#3bc0c3]' : ''}`}>
+                        <AiOutlinePicture size={20} />
+                        <div className='cursor-pointer hover:text-[#3bc0c3]'>Master Galeri</div>
+                    </Link>
+                    <Link to='/paneladmin/menu' className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/menu' ? 'text-[#3bc0c3]' : ''}`}>
+                        <TfiMenuAlt size={20} />
+                        <div className='cursor-pointer hover:text-[#3bc0c3]'>Menu Website</div>
+                    </Link>
+                    <Link to='/paneladmin/ourservice' className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/ourservice' ? 'text-[#3bc0c3]' : ''}`}>
+                        <FaRegSnowflake size={20} />
+                        <div className='cursor-pointer hover:text-[#3bc0c3]'>Our Service</div>
+                    </Link>
+                    <Link to='/paneladmin/setting' className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/setting' ? 'text-[#3bc0c3]' : ''}`}>
+                        <AiFillSetting size={20} />
+                        <div className='cursor-pointer hover:text-[#3bc0c3]'>Pengaturan</div>
+                    </Link>
                 </div>
             </div>
-        </>
     )
 }
 
