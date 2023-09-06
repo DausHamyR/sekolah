@@ -21,7 +21,7 @@ function Body() {
                     {location.pathname === '/paneladmin/vidio' && <div className='flex items-center gap-2'><AiFillYoutube size={25}/>Data Vidio</div>}
                     {location.pathname === '/paneladmin/slider' && <div className='flex items-center gap-2'><BiSlider size={25}/>Data Slider</div>}
                     {location.pathname === '/paneladmin/menu' && <div className='flex items-center gap-2'><TfiMenuAlt size={25}/>Data Menu Utama</div>}
-                    {location.pathname === '/paneladmin/ourservice' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Ourservice</div>}
+                    {location.pathname === '/paneladmin/ourservice' && <div className='flex items-center gap-2'><FaRegSnowflake size={25}/>Data Ourservice</div>}
                 </div>
                 <div className='bg-[#3bc0c3] px-2 py-0.5 cursor-pointer hover:bg-[#30999c]'>
                     {location.pathname === '/paneladmin/kategori' && <div className='text-white font-medium'>+ Tambah Kategori</div>}
