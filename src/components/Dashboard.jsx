@@ -28,7 +28,7 @@ const Dashboard = ()=> {
     };
 
     return (
-        <div className='bg-slate-700 w-[250px] h-[900px]'>
+        <div className='bg-slate-700 w-[250px] min-h-screen'>
                 <div className='pt-6 mb-24 flex justify-center items-end'>
                     <div className='text-white text-2xl font-semibold'>ADMINISTRATOR</div>
                 </div>

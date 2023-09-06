@@ -239,7 +239,7 @@ function PAdminSetting() {
                             </div>
                         )}
                     </div>
-                    <div className='bg-white w-[650px] p-4'>
+                    <div className='bg-white w-[650px] h-[450px] p-4'>
                         <div className='flex gap-1'>
                             <HiOutlineMailOpen size={25}/>
                             <div className='text-xl font-medium'>Testing Email</div>
@@ -262,7 +262,7 @@ function PAdminSetting() {
                         </div>
                     </div>
                 </div>
-                <Footer />
+                <div className='bg-slate-300 p-4 text-center mt-8 w-full top-[720px]'>2023 © SMKN 77 NGANJUK Versi 1.0 by Rino Oktavianto</div>
             </div>
         </div>
     )
