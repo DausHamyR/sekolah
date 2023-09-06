@@ -11,9 +11,9 @@ function Body() {
                 <div className='font-medium text-xl'>
                     {location.pathname === '/paneladmin/kategori' && <div className='flex items-center gap-2'><MdSell />Data Kategori</div>}
                     {location.pathname === '/paneladmin/halaman' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Halaman</div>}
-                    {location.pathname === '/paneladmin/acara' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Acara</div>}
+                    {location.pathname === '/paneladmin/acara' && <div className='flex items-center gap-2'><BsFillCalendarEventFill />Data Acara</div>}
                     {location.pathname === '/paneladmin/tambahAcara' && <div className='flex items-center gap-2'><AiOutlineFileText />Tambah Acara</div>}
-                    {location.pathname === '/paneladmin/article' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Article</div>}
+                    {location.pathname === '/paneladmin/article' && <div className='flex items-center gap-2'><FaNewspaper />Data Article</div>}
                     {location.pathname === '/paneladmin/tambahArticle' && <div className='flex items-center gap-2'><AiOutlineFileText />Tambah Article</div>}
                     {location.pathname === '/paneladmin/album' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Album</div>}
                     {location.pathname === '/paneladmin/galeri' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Galeri</div>}

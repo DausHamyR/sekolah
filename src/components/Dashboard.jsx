@@ -66,7 +66,7 @@ const Dashboard = ()=> {
                         )}
                     </div>
                     <div>
-                        <button onClick={() => buttonMasterGaleri()} className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/tambahArticle' || location.pathname === '/paneladmin/article' ? 'text-[#3bc0c3]' : ''}`}>
+                        <button onClick={() => buttonMasterGaleri()} className={`hover:text-[#3bc0c3] flex items-center gap-2 ${location.pathname === '/paneladmin/album' || location.pathname === '/paneladmin/galeri' || location.pathname === '/paneladmin/vidio' || location.pathname === '/paneladmin/slider' ? 'text-[#3bc0c3]' : ''}`}>
                             <AiOutlinePicture size={20} />
                             <div className='cursor-pointer hover:text-[#3bc0c3]'>Master Galeri</div>
                         </button>
