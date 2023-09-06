@@ -1,5 +1,5 @@
 import {MdSell} from 'react-icons/md'
-import {AiOutlineFileText, AiOutlinePicture, AiFillSetting, AiFillFolder, AiFillYoutube} from 'react-icons/ai'
+import {AiOutlineFileText, AiOutlinePicture, AiFillFolder, AiFillYoutube} from 'react-icons/ai'
 import {BsFillCalendarEventFill} from 'react-icons/bs'
 import {FaNewspaper, FaRegSnowflake} from 'react-icons/fa'
 import {TfiMenuAlt} from 'react-icons/tfi'
