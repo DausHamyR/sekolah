@@ -1,8 +1,9 @@
 import {MdSell} from 'react-icons/md'
-import {AiOutlineFileText, AiOutlinePicture, AiFillSetting} from 'react-icons/ai'
+import {AiOutlineFileText, AiOutlinePicture, AiFillSetting, AiFillFolder, AiFillYoutube} from 'react-icons/ai'
 import {BsFillCalendarEventFill} from 'react-icons/bs'
 import {FaNewspaper, FaRegSnowflake} from 'react-icons/fa'
 import {TfiMenuAlt} from 'react-icons/tfi'
+import {BiSlider} from 'react-icons/bi'
 
 function Body() {
     return (
@@ -10,15 +11,15 @@ function Body() {
             <div className='flex justify-between mb-12'>
                 <div className='font-medium text-xl'>
                     {location.pathname === '/paneladmin/kategori' && <div className='flex items-center gap-2'><MdSell />Data Kategori</div>}
-                    {location.pathname === '/paneladmin/halaman' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Halaman</div>}
+                    {location.pathname === '/paneladmin/halaman' && <div className='flex items-center gap-2'><AiOutlineFileText size={25}/>Data Halaman</div>}
                     {location.pathname === '/paneladmin/acara' && <div className='flex items-center gap-2'><BsFillCalendarEventFill />Data Acara</div>}
                     {location.pathname === '/paneladmin/tambahAcara' && <div className='flex items-center gap-2'><AiOutlineFileText />Tambah Acara</div>}
                     {location.pathname === '/paneladmin/article' && <div className='flex items-center gap-2'><FaNewspaper />Data Article</div>}
                     {location.pathname === '/paneladmin/tambahArticle' && <div className='flex items-center gap-2'><AiOutlineFileText />Tambah Article</div>}
-                    {location.pathname === '/paneladmin/album' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Album</div>}
-                    {location.pathname === '/paneladmin/galeri' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Galeri</div>}
-                    {location.pathname === '/paneladmin/vidio' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Vidio</div>}
-                    {location.pathname === '/paneladmin/slider' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Slider</div>}
+                    {location.pathname === '/paneladmin/album' && <div className='flex items-center gap-2'><AiFillFolder size={25}/>Data Album</div>}
+                    {location.pathname === '/paneladmin/galeri' && <div className='flex items-center gap-2'><AiOutlinePicture size={25}/>Data Galeri</div>}
+                    {location.pathname === '/paneladmin/vidio' && <div className='flex items-center gap-2'><AiFillYoutube size={25}/>Data Vidio</div>}
+                    {location.pathname === '/paneladmin/slider' && <div className='flex items-center gap-2'><BiSlider size={25}/>Data Slider</div>}
                     {location.pathname === '/paneladmin/menu' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Menu Utama</div>}
                     {location.pathname === '/paneladmin/ourservice' && <div className='flex items-center gap-2'><AiOutlineFileText />Data Ourservice</div>}
                 </div>
