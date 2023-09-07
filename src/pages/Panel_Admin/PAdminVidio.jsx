@@ -1,10 +1,10 @@
 // import React from 'react'
-import Body from '../components/Body'
-import Dashboard from '../components/Dashboard'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import Body from '../../components/Body'
+import Dashboard from '../../components/Dashboard'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
 
-function PAdminMenu() {
+function PAdminVidio() {
     return (
         <div className='bg-slate-200 flex'>
             <Dashboard />
@@ -15,22 +15,15 @@ function PAdminMenu() {
                     <div>
                         <div className='flex font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>No</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4'>Aksi</div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4'>Aksi</div>
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>1</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -41,14 +34,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>2</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -59,14 +47,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>3</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -77,14 +60,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>4</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -95,14 +73,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>5</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -113,14 +86,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>6</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -131,14 +99,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>7</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -149,14 +112,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>8</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -167,14 +125,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>9</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -185,14 +138,9 @@ function PAdminMenu() {
                         </div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.018] border py-2 px-4'>10</div>
-                            <div className='flex-[0.22] border py-2 px-4'>Menu</div>
-                            <div className='flex-[0.35] border py-2 px-4'>Url</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Target</div>
-                            <div className='flex-[0.1] border py-2 px-4'>Urutan</div>
-                            <div className='flex-[0.212] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#33b0e0] px-2 py-0.5 cursor-pointer'>
-                                    <div>Sub</div>
-                                </div>
+                            <div className='flex-[0.45] border py-2 px-4'>Youtube</div>
+                            <div className='flex-[0.4] border py-2 px-4'>Keterangan</div>
+                            <div className='flex-[0.132] border py-2 px-4 flex gap-2 text-white'>
                                 <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                     <div>Edit</div>
                                 </div>
@@ -219,4 +167,4 @@ function PAdminMenu() {
     )
 }
 
-export default PAdminMenu
+export default PAdminVidio

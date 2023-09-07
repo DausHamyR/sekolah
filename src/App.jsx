@@ -4,19 +4,19 @@ import { store, persistor } from "./redux/store";
 // import PrivateRoute from "./components/PrivateRoute";
 import {PersistGate} from 'redux-persist/integration/react'
 
-import PAdminKategori from "./pages/PAdminKategori";
-import PAdminHalaman from "./pages/PAdminHalaman";
-import PAdminAcara from "./pages/PAdminAcara";
-import PAdminTambahAcara from "./pages/PAdminTambahAcara";
-import PAdminArticle from "./pages/PAdminArticle";
-import PAdminTambahArticle from "./pages/PAdminTambahArticle";
-import PAdminAlbum from "./pages/PAdminAlbum";
-import PAdminGaleri from "./pages/PAdminGaleri";
-import PAdminVidio from "./pages/PAdminVidio";
-import PAdminSlider from "./pages/PAdminSlider";
-import PAdminMenu from "./pages/PAdminMenu";
-import PAdminOurservice from "./pages/PAdminOurservice";
-import PAdminSetting from "./pages/PAdminSetting";
+import PAdminKategori from "./pages/Panel_Admin/PAdminKategori";
+import PAdminHalaman from "./pages/Panel_Admin/PAdminHalaman";
+import PAdminAcara from "./pages/Panel_Admin/PAdminAcara";
+import PAdminTambahAcara from "./pages/Panel_Admin/PAdminTambahAcara";
+import PAdminArticle from "./pages/Panel_Admin/PAdminArticle";
+import PAdminTambahArticle from "./pages/Panel_Admin/PAdminTambahArticle";
+import PAdminAlbum from "./pages/Panel_Admin/PAdminAlbum";
+import PAdminGaleri from "./pages/Panel_Admin/PAdminGaleri";
+import PAdminVidio from "./pages/Panel_Admin/PAdminVidio";
+import PAdminSlider from "./pages/Panel_Admin/PAdminSlider";
+import PAdminMenu from "./pages/Panel_Admin/PAdminMenu";
+import PAdminOurservice from "./pages/Panel_Admin/PAdminOurservice";
+import PAdminSetting from "./pages/Panel_Admin/PAdminSetting";
 
 const App = ()=> {
     return (
