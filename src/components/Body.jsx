@@ -1,11 +1,28 @@
 import {MdSell} from 'react-icons/md'
 import {AiOutlineFileText, AiOutlinePicture, AiFillFolder, AiFillYoutube} from 'react-icons/ai'
-import {BsFillCalendarEventFill} from 'react-icons/bs'
+import {BsFillCalendarEventFill, BsCheckLg} from 'react-icons/bs'
 import {FaNewspaper, FaRegSnowflake} from 'react-icons/fa'
 import {TfiMenuAlt} from 'react-icons/tfi'
 import {BiSlider} from 'react-icons/bi'
+import { Formik } from 'formik'
+import http from '../helpers/http.helper'
+import React from 'react'
 
 function Body() {
+    const [showModal, setShowModal] = React.useState(false);
+
+    const btnCreateKategori = async values => {
+        try {
+            const body = new URLSearchParams({
+                kategori: values.kategori,
+            }).toString();
+            const {data} = await http().post('/kategori', body);
+            setShowModal(false)
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
     return (
         <div>
             <div className='flex justify-between mb-12'>
@@ -24,7 +41,7 @@ function Body() {
                     {location.pathname === '/paneladmin/ourservice' && <div className='flex items-center gap-2'><FaRegSnowflake size={25}/>Data Ourservice</div>}
                 </div>
                 <div className='bg-[#3bc0c3] px-2 py-0.5 cursor-pointer hover:bg-[#30999c]'>
-                    {location.pathname === '/paneladmin/kategori' && <div className='text-white font-medium'>+ Tambah Kategori</div>}
+                    {location.pathname === '/paneladmin/kategori' && <button type='button' onClick={()=> setShowModal(true)} className='text-white font-medium cursor-pointer'>+ Tambah Kategori</button>}
                     {location.pathname === '/paneladmin/halaman' && <div className='text-white font-medium'>+ Tambah Halaman</div>}
                     {location.pathname === '/paneladmin/acara' && <div className='text-white font-medium'>+ Tambah Acara</div>}
                     {location.pathname === '/paneladmin/article' && <div className='text-white font-medium'>+ Tambah Article</div>}
@@ -47,6 +64,33 @@ function Body() {
                 <div className='flex items-center gap-2'>
                     <div>Search:</div>
                     <input type="text" className='border-2 pl-2'/>
+                </div>
+            </div>
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} readOnly/>
+            <div className="modal">
+                <div className="modal-box absolute top-12 max-w-[700px]">
+                    <h3 className="font-bold text-lg">Tambah Kategori</h3>
+                    <Formik
+                    initialValues={{
+                        kategori: ''
+                    }}
+                    onSubmit={btnCreateKategori}
+                    enableReinitialize
+                    >
+                        {({handleSubmit, handleChange, handleBlur, values})=> (
+                        <form onSubmit={handleSubmit} className='my-6'>
+                            <div className='text-slate-400 font-medium'>Nama Kategori</div>
+                            <input name='kategori' type="text" className='border-2 w-full pl-4 py-2 mt-2' onChange={handleChange} onBlur={handleBlur} value={values.kategori}/>
+                            <div className="modal-action">
+                                <button type='submit' className="flex items-center px-2 py-0.5 bg-blue-500 text-white rounded-md font-semibold">
+                                    <BsCheckLg size={23}/>
+                                    <div className="">Simpan</div>
+                                </button>
+                                <button type='button' onClick={()=> setShowModal(false)} className="btn">Close</button>
+                            </div>
+                        </form>
+                        )}
+                    </Formik>
                 </div>
             </div>
         </div>

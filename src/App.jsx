@@ -18,6 +18,8 @@ import PAdminMenu from "./pages/Panel_Admin/PAdminMenu";
 import PAdminOurservice from "./pages/Panel_Admin/PAdminOurservice";
 import PAdminSetting from "./pages/Panel_Admin/PAdminSetting";
 
+import Kategori from "./pages/Kategori";
+
 const App = ()=> {
     return (
         <Provider store={store}>
@@ -37,6 +39,8 @@ const App = ()=> {
                         <Route path="/paneladmin/menu" element={<PAdminMenu />} />
                         <Route path="/paneladmin/ourservice" element={<PAdminOurservice />} />
                         <Route path="/paneladmin/setting" element={<PAdminSetting />} />
+
+                        <Route path="/kategori/:name" element={<Kategori />} />
                     </Routes>
                 </BrowserRouter>
             </PersistGate>
