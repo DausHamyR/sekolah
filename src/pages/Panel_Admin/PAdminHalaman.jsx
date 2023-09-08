@@ -16,6 +16,7 @@ function PAdminHalaman() {
     const [showModalDelete, setShowModalDelete] = React.useState(false);
     const [idHalaman, setIdHalaman] = React.useState(0);
     const [nameHalaman, setNameHalaman] = React.useState('');
+    const [nameIsiHalaman, setNameIsiHalaman] = React.useState('');
     const [receivedData, setReceivedData] = React.useState("");
 
     React.useEffect(()=> {
@@ -73,7 +74,7 @@ function PAdminHalaman() {
                                 <div className='flex-[0.48] border py-2 px-4 '>{halaman.slug}</div>
                                 <div className='flex-[0.25] border py-2 px-4'>{moment(halaman.createdAt).format('DD-MM-YYYY')}</div>
                                 <div className='flex-[0.25] items-center border py-2 px-4 flex gap-2 text-white'>
-                                    <button onClick={()=> (setShowModal(true), setIdHalaman(halaman.id))} className='flex items-center bg-[#edc755] px-2 py-0.5 cursor-pointer max-h-6 rounded-md'>
+                                    <button onClick={()=> (setShowModal(true), setIdHalaman(halaman.id), setNameHalaman(halaman.judul), setNameIsiHalaman(halaman.isi_halaman))} className='flex items-center bg-[#edc755] px-2 py-0.5 cursor-pointer max-h-6 rounded-md'>
                                         <AiFillEdit />
                                         <div>Edit</div>
                                     </button>
@@ -104,8 +105,8 @@ function PAdminHalaman() {
                     <h3 className="font-bold text-lg">Edit Halaman</h3>
                     <Formik
                     initialValues={{
-                        judul: "",
-                        isiHalaman: ""
+                        judul: nameHalaman,
+                        isiHalaman: nameIsiHalaman
                     }}
                     onSubmit={btnUpdateHalaman}
                     enableReinitialize

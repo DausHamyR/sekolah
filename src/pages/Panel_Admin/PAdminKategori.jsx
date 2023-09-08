@@ -69,7 +69,7 @@ function PAdminKategori() {
                                 <div className='flex-[0.22] border py-2 px-4 '>{kategori.kategori}</div>
                                 <div className='flex-[0.48] border py-2 px-4 '>{kategori.slug}</div>
                                 <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                    <button onClick={()=> (setShowModal(true), setIdKategori(kategori.id))} className='rounded-md flex items-center bg-[#edc755] px-2 py-0.5 cursor-pointer'>
+                                    <button onClick={()=> (setShowModal(true), setIdKategori(kategori.id), setNameKategori(kategori.kategori))} className='rounded-md flex items-center bg-[#edc755] px-2 py-0.5 cursor-pointer'>
                                         <AiFillEdit />
                                         <div>Edit</div>
                                     </button>
@@ -100,7 +100,7 @@ function PAdminKategori() {
                     <h3 className="font-bold text-lg">Update Kategori</h3>
                     <Formik
                     initialValues={{
-                        kategori: ""
+                        kategori: nameKategori
                     }}
                     onSubmit={btnUpdateKategori}
                     enableReinitialize
