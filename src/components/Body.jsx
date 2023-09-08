@@ -13,7 +13,9 @@ function Body(props) {
     const [search, setSearch] = React.useState('')
 
     React.useEffect(() => {
-        props.onDataReceive(search);
+        if(search){
+            props.onDataReceive(search);
+        }
     }, [props, search]);
 
     // const getUsers = React.useCallback(async(search='')=>{
@@ -54,7 +56,7 @@ function Body(props) {
                     {location.pathname === '/paneladmin/menu' && <div className='flex items-center gap-2'><TfiMenuAlt size={25}/>Data Menu Utama</div>}
                     {location.pathname === '/paneladmin/ourservice' && <div className='flex items-center gap-2'><FaRegSnowflake size={25}/>Data Ourservice</div>}
                 </div>
-                <div className='bg-[#3bc0c3] px-2 py-0.5 cursor-pointer hover:bg-[#30999c]'>
+                <div className='bg-[#3bc0c3] px-4 py-1 cursor-pointer hover:bg-[#30999c] rounded-md'>
                     {location.pathname === '/paneladmin/kategori' && <button type='button' onClick={()=> setShowModal(true)} className='text-white font-medium cursor-pointer'>+ Tambah Kategori</button>}
                     {location.pathname === '/paneladmin/halaman' && <div className='text-white font-medium'>+ Tambah Halaman</div>}
                     {location.pathname === '/paneladmin/acara' && <div className='text-white font-medium'>+ Tambah Acara</div>}
@@ -77,7 +79,8 @@ function Body(props) {
                 </div>
                 <div className='flex items-center gap-2'>
                     <div>Search:</div>
-                    <input onChange={(e)=> setSearch(e.target.value)} type="text" className='border-2 pl-2'/>
+                    {location.pathname === '/paneladmin/kategori' && <input onChange={(e)=> setSearch(e.target.value)} type="text" className='rounded-md border-2 pl-2'/>}
+                    {location.pathname === '/paneladmin/halaman' && <input onChange={(e)=> setSearch(e.target.value)} type="text" className='rounded-md border-2 pl-2'/>}
                 </div>
             </div>
             <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} readOnly/>

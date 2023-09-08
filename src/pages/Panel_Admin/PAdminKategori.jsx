@@ -6,6 +6,7 @@ import Body from '../../components/Body'
 import http from '../../helpers/http.helper'
 import { Formik } from 'formik'
 import {BsCheckLg} from 'react-icons/bs'
+import {AiFillEdit, AiFillDelete} from 'react-icons/ai'
 
 function PAdminKategori() {
     const [kategori, setKategori] = React.useState();
@@ -65,10 +66,12 @@ function PAdminKategori() {
                                 <div className='flex-[0.22] border py-2 px-4 '>{kategori.kategori}</div>
                                 <div className='flex-[0.48] border py-2 px-4 '>{kategori.slug}</div>
                                 <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                    <button onClick={()=> (setShowModal(true), setIdKategori(kategori.id))} className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
+                                    <button onClick={()=> (setShowModal(true), setIdKategori(kategori.id))} className='rounded-md flex items-center bg-[#edc755] px-2 py-0.5 cursor-pointer'>
+                                        <AiFillEdit />
                                         <div>Edit</div>
                                     </button>
-                                    <button onClick={()=> removeKategori(kategori.id)} className='bg-red-600 px-2 py-0.5 cursor-pointer'>
+                                    <button onClick={()=> removeKategori(kategori.id)} className='rounded-md flex items-center bg-red-600 px-2 py-0.5 cursor-pointer'>
+                                        <AiFillDelete />
                                         <div>Hapus</div>
                                     </button>
                                 </div>
