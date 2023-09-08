@@ -30,8 +30,7 @@ function PAdminKategori() {
             const body = new URLSearchParams({
                 kategori: values.kategori,
             }).toString();
-            const {data} = await http().patch(`/kategori/${idKategori}`, body);
-            console.log(data)
+            await http().patch(`/kategori/${idKategori}`, body);
         } catch (err) {
             console.log(err)
         }
