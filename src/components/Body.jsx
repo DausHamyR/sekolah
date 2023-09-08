@@ -8,8 +8,22 @@ import { Formik } from 'formik'
 import http from '../helpers/http.helper'
 import React from 'react'
 
-function Body() {
+function Body(props) {
     const [showModal, setShowModal] = React.useState(false);
+    const [search, setSearch] = React.useState('')
+
+    React.useEffect(() => {
+        props.onDataReceive(search);
+    }, [props, search]);
+
+    // const getUsers = React.useCallback(async(search='')=>{
+    //     const {data} = await http().get('/kategori', {params: {search}})
+    //     console.log(data)
+    // }, [])
+
+    // React.useEffect(()=> {
+    //     getUsers(search)
+    // }, [ search, getUsers])
 
     const btnCreateKategori = async values => {
         try {
@@ -63,7 +77,7 @@ function Body() {
                 </div>
                 <div className='flex items-center gap-2'>
                     <div>Search:</div>
-                    <input type="text" className='border-2 pl-2'/>
+                    <input onChange={(e)=> setSearch(e.target.value)} type="text" className='border-2 pl-2'/>
                 </div>
             </div>
             <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} readOnly/>

@@ -11,14 +11,15 @@ function PAdminKategori() {
     const [kategori, setKategori] = React.useState();
     const [showModal, setShowModal] = React.useState(false);
     const [idKategori, setIdKategori] = React.useState(0);
+    const [receivedData, setReceivedData] = React.useState("");
 
     React.useEffect(()=> {
         const getKategori = async() => {
-            const {data} = await http().get("/kategori")
+            const {data} = await http().get("/kategori", {params: {search: receivedData}})
             setKategori(data.results)
         }
-            getKategori()
-    }, [kategori])
+            getKategori(receivedData)
+    }, [kategori, receivedData])
 
     const btnUpdateKategori = async values => {
         try {
@@ -40,13 +41,17 @@ function PAdminKategori() {
         }
     }
 
+    const handleDataReceive = (data) => {
+        setReceivedData(data);
+    }
+
     return (
         <div className='bg-slate-200 flex'>
             <Dashboard />
             <div className='w-full'>
                 <Navbar />
                 <div className='bg-white w-[97%] mx-4 mt-6 p-6'>
-                    <Body />
+                    <Body onDataReceive={handleDataReceive}/>
                     <div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.05] border py-2 px-4 '>No</div>
