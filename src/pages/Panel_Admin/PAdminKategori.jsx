@@ -7,11 +7,14 @@ import http from '../../helpers/http.helper'
 import { Formik } from 'formik'
 import {BsCheckLg} from 'react-icons/bs'
 import {AiFillEdit, AiFillDelete} from 'react-icons/ai'
+import {PiWarningCircleBold} from 'react-icons/pi'
 
 function PAdminKategori() {
     const [kategori, setKategori] = React.useState();
     const [showModal, setShowModal] = React.useState(false);
+    const [showModalDelete, setShowModalDelete] = React.useState(false);
     const [idKategori, setIdKategori] = React.useState(0);
+    const [nameKategori, setNameKategori] = React.useState('');
     const [receivedData, setReceivedData] = React.useState("");
 
     React.useEffect(()=> {
@@ -34,9 +37,10 @@ function PAdminKategori() {
         }
     };
 
-    async function removeKategori(id) {
+    async function removeKategori(idKategori) {
         try {
-            await http().delete(`/kategori/${id}`);
+            await http().delete(`/kategori/${idKategori}`);
+            setShowModalDelete(false)
         } catch (err) {
             console.log(err);
         }
@@ -70,7 +74,7 @@ function PAdminKategori() {
                                         <AiFillEdit />
                                         <div>Edit</div>
                                     </button>
-                                    <button onClick={()=> removeKategori(kategori.id)} className='rounded-md flex items-center bg-red-600 px-2 py-0.5 cursor-pointer'>
+                                    <button onClick={()=> (setShowModalDelete(true), setIdKategori(kategori.id), setNameKategori(kategori.kategori))} className='rounded-md flex items-center bg-red-600 px-2 py-0.5 cursor-pointer'>
                                         <AiFillDelete />
                                         <div>Hapus</div>
                                     </button>
@@ -116,6 +120,19 @@ function PAdminKategori() {
                         </form>
                         )}
                     </Formik>
+                </div>
+            </div>
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModalDelete} readOnly/>
+            <div className="modal">
+                <div className="modal-box absolute top-12 max-w-[700px]">
+                    <PiWarningCircleBold size={50} className='text-red-500 mb-2'/>
+                    <h3 className="font-bold text-xl text-red-500">Anda Yakin Untuk Menghapus Kategori ({nameKategori})?</h3>
+                    <div className="modal-action">
+                        <button onClick={()=> removeKategori(idKategori)} type='submit' className="flex items-center px-4 text-lg py-0.5 bg-red-500 text-white rounded-md font-semibold">
+                            <div className="">Delete</div>
+                        </button>
+                        <button type='button' onClick={()=> setShowModalDelete(false)} className="btn text-lg">Batal</button>
+                    </div>
                 </div>
             </div>
         </div>
