@@ -9,7 +9,8 @@ import http from '../helpers/http.helper'
 import React from 'react'
 
 function Body(props) {
-    const [showModal, setShowModal] = React.useState(false);
+    const [showModalKategori, setShowModalKategori] = React.useState(false);
+    const [showModalHalaman, setShowModalHalaman] = React.useState(false);
     const [search, setSearch] = React.useState('')
 
     React.useEffect(() => {
@@ -18,22 +19,29 @@ function Body(props) {
         }
     }, [props, search]);
 
-    // const getUsers = React.useCallback(async(search='')=>{
-    //     const {data} = await http().get('/kategori', {params: {search}})
-    //     console.log(data)
-    // }, [])
-
-    // React.useEffect(()=> {
-    //     getUsers(search)
-    // }, [ search, getUsers])
-
     const btnCreateKategori = async values => {
         try {
             const body = new URLSearchParams({
                 kategori: values.kategori,
             }).toString();
-            const {data} = await http().post('/kategori', body);
-            setShowModal(false)
+            await http().post('/kategori', body);
+            setShowModalKategori(false)
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
+    const btnCreateHalaman = async values => {
+        try {
+            console.log(values)
+            const body = new URLSearchParams({
+                judul: values.judul,
+                isiHalaman: values.isiHalaman
+            }).toString();
+            console.log(body)
+            await http().post('/halaman', body);
+            console.log("body")
+            setShowModalHalaman(false)
         } catch (err) {
             console.log(err)
         }
@@ -57,8 +65,8 @@ function Body(props) {
                     {location.pathname === '/paneladmin/ourservice' && <div className='flex items-center gap-2'><FaRegSnowflake size={25}/>Data Ourservice</div>}
                 </div>
                 <div className='bg-[#3bc0c3] px-4 py-1 cursor-pointer hover:bg-[#30999c] rounded-md'>
-                    {location.pathname === '/paneladmin/kategori' && <button type='button' onClick={()=> setShowModal(true)} className='text-white font-medium cursor-pointer'>+ Tambah Kategori</button>}
-                    {location.pathname === '/paneladmin/halaman' && <div className='text-white font-medium'>+ Tambah Halaman</div>}
+                    {location.pathname === '/paneladmin/kategori' && <button type='button' onClick={()=> setShowModalKategori(true)} className='text-white font-medium'>+ Tambah Kategori</button>}
+                    {location.pathname === '/paneladmin/halaman' && <button type='button' onClick={()=> setShowModalHalaman(true)} className='text-white font-medium'>+ Tambah Halaman</button>}
                     {location.pathname === '/paneladmin/acara' && <div className='text-white font-medium'>+ Tambah Acara</div>}
                     {location.pathname === '/paneladmin/article' && <div className='text-white font-medium'>+ Tambah Article</div>}
                     {location.pathname === '/paneladmin/album' && <div className='text-white font-medium'>+ Tambah Album</div>}
@@ -83,7 +91,7 @@ function Body(props) {
                     {location.pathname === '/paneladmin/halaman' && <input onChange={(e)=> setSearch(e.target.value)} type="text" className='rounded-md border-2 pl-2'/>}
                 </div>
             </div>
-            <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} readOnly/>
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModalKategori} readOnly/>
             <div className="modal">
                 <div className="modal-box absolute top-12 max-w-[700px]">
                     <h3 className="font-bold text-lg">Tambah Kategori</h3>
@@ -103,7 +111,40 @@ function Body(props) {
                                     <BsCheckLg size={23}/>
                                     <div className="">Simpan</div>
                                 </button>
-                                <button type='button' onClick={()=> setShowModal(false)} className="btn">Close</button>
+                                <button type='button' onClick={()=> setShowModalKategori(false)} className="btn">Close</button>
+                            </div>
+                        </form>
+                        )}
+                    </Formik>
+                </div>
+            </div>
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModalHalaman} readOnly/>
+            <div className="modal">
+                <div className="modal-box absolute top-12 max-w-[700px]">
+                    <h3 className="font-bold text-lg">Tambah Halaman</h3>
+                    <Formik
+                    initialValues={{
+                        judul: ''
+                    }}
+                    onSubmit={btnCreateHalaman}
+                    enableReinitialize
+                    >
+                        {({handleSubmit, handleChange, handleBlur, values})=> (
+                        <form onSubmit={handleSubmit} className='my-6'>
+                            <div>
+                                <div className='text-slate-400 font-medium'>Judul Halaman</div>
+                                <input name='judul' type="text" className='border-2 w-full pl-4 py-2 mt-2' onChange={handleChange} onBlur={handleBlur} value={values.judul}/>
+                            </div>
+                            <div>
+                                <div className='text-slate-400 font-medium'>Isi Halaman</div>
+                                <input name='isiHalaman' type="text" className='border-2 w-full pl-4 py-2 mt-2' onChange={handleChange} onBlur={handleBlur} value={values.isiHalaman}/>
+                            </div>
+                            <div className="modal-action">
+                                <button type='submit' className="flex items-center px-2 py-0.5 bg-blue-500 text-white rounded-md font-semibold">
+                                    <BsCheckLg size={23}/>
+                                    <div className="">Simpan</div>
+                                </button>
+                                <button type='button' onClick={()=> setShowModalHalaman(false)} className="btn">Close</button>
                             </div>
                         </form>
                         )}

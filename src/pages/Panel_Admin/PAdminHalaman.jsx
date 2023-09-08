@@ -1,17 +1,59 @@
-// import React from 'react'
+import React from 'react'
 import Body from '../../components/Body'
 import Dashboard from '../../components/Dashboard'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
+import http from '../../helpers/http.helper'
+import moment from 'moment/moment'
+import {AiFillEdit, AiFillDelete} from 'react-icons/ai'
+import {BsCheckLg} from 'react-icons/bs'
+import { Formik } from 'formik'
 
 function PAdminHalaman() {
+    const [halaman, setHalaman] = React.useState();
+    const [showModal, setShowModal] = React.useState(false);
+    const [idKategori, setIdKategori] = React.useState(0);
+    const [receivedData, setReceivedData] = React.useState("");
+
+    React.useEffect(()=> {
+        const getHalaman = async() => {
+            const {data} = await http().get("/halaman", {params: {search: receivedData}})
+            setHalaman(data.results)
+        }
+            getHalaman(receivedData)
+    }, [halaman, receivedData])
+
+    const btnUpdateHalaman = async values => {
+        try {
+            const body = new URLSearchParams({
+                judul: values.judul,
+                isiHalaman: values.isiHalaman
+            }).toString();
+            const {data} = await http().patch(`/halaman/${idKategori}`, body);
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
+    async function removeHalaman(id) {
+        try {
+            await http().delete(`/halaman/${id}`);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const handleDataReceive = (data) => {
+        setReceivedData(data);
+    }
+
     return (
         <div className='bg-slate-200 flex'>
             <Dashboard />
             <div className='w-full'>
                 <Navbar />
                 <div className='bg-white w-[97%] mx-4 mt-6 p-6'>
-                    <Body />
+                    <Body onDataReceive={handleDataReceive}/>
                     <div>
                         <div className='flex justify-between font-medium'>
                             <div className='flex-[0.05] border py-2 px-4 '>No</div>
@@ -20,146 +62,24 @@ function PAdminHalaman() {
                             <div className='flex-[0.25] border py-2 px-4 '>Tanggal</div>
                             <div className='flex-[0.25] border py-2 px-4 '>Aksi</div>
                         </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>1</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>2</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
+                        {halaman?.map((halaman, index) => (
+                            <div key={halaman.id} className='flex justify-between font-medium'>
+                                <div className='flex-[0.05] border py-2 px-4 '>{index+1}</div>
+                                <div className='flex-[0.22] border py-2 px-4 '>{halaman.judul}</div>
+                                <div className='flex-[0.48] border py-2 px-4 '>{halaman.slug}</div>
+                                <div className='flex-[0.25] border py-2 px-4'>{moment(halaman.createdAt).format('DD-MM-YYYY')}</div>
+                                <div className='flex-[0.25] items-center border py-2 px-4 flex gap-2 text-white'>
+                                    <button onClick={()=> (setShowModal(true), setIdKategori(halaman.id))} className='flex items-center bg-[#edc755] px-2 py-0.5 cursor-pointer max-h-6 rounded-md'>
+                                        <AiFillEdit />
+                                        <div>Edit</div>
+                                    </button>
+                                    <button onClick={()=> removeHalaman(halaman.id)} className='flex items-center bg-red-600 px-2 py-0.5 cursor-pointer max-h-6 rounded-md'>
+                                        <AiFillDelete />
+                                        <div>Hapus</div>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>3</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>4</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>5</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>6</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>7</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>8</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>9</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-between font-medium'>
-                            <div className='flex-[0.05] border py-2 px-4 '>10</div>
-                            <div className='flex-[0.22] border py-2 px-4 '>Kategori</div>
-                            <div className='flex-[0.48] border py-2 px-4 '>Slug</div>
-                            <div className='flex-[0.25] border py-2 px-4'>23-08-2023</div>
-                            <div className='flex-[0.25] border py-2 px-4 flex gap-2 text-white'>
-                                <div className='bg-[#edc755] px-2 py-0.5 cursor-pointer'>
-                                    <div>Edit</div>
-                                </div>
-                                <div className='bg-red-600 px-2 py-0.5 cursor-pointer'>
-                                    <div>Hapus</div>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div className='mt-4 flex justify-between'>
                         <div>Showing 1 to 10 of 10 entries</div>
@@ -173,6 +93,40 @@ function PAdminHalaman() {
                     </div>
                 </div>
                 <Footer />
+            </div>
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" checked={showModal} readOnly/>
+            <div className="modal">
+                <div className="modal-box absolute top-12 max-w-[700px]">
+                    <h3 className="font-bold text-lg">Edit Halaman</h3>
+                    <Formik
+                    initialValues={{
+                        judul: "",
+                        isiHalaman: ""
+                    }}
+                    onSubmit={btnUpdateHalaman}
+                    enableReinitialize
+                    >
+                        {({handleSubmit, handleChange, handleBlur, values})=> (
+                        <form onSubmit={handleSubmit} className='my-6'>
+                            <div className='mb-6'>
+                                <div className='text-slate-400 font-medium'>Judul Halaman</div>
+                                <input name='judul' type="text" className='border-2 w-full pl-4 py-2 mt-2' onChange={handleChange} onBlur={handleBlur} value={values.judul}/>
+                            </div>
+                            <div>
+                                <div className='text-slate-400 font-medium'>Isi Halaman</div>
+                                <input name='isiHalaman' type="textarea" className='border-2 w-full pl-4 py-2 mt-2' onChange={handleChange} onBlur={handleBlur} value={values.isiHalaman}/>
+                            </div>
+                            <div className="modal-action">
+                                <button onClick={()=> setShowModal(false)} type='submit' className="flex items-center px-2 py-0.5 bg-blue-500 text-white rounded-md font-semibold">
+                                    <BsCheckLg size={23}/>
+                                    <div className="">Simpan</div>
+                                </button>
+                                <button type='button' onClick={()=> setShowModal(false)} className="btn">Close</button>
+                            </div>
+                        </form>
+                        )}
+                    </Formik>
+                </div>
             </div>
         </div>
     )
